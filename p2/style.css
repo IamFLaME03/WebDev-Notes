@@ -1,0 +1,13 @@
+body{
+    background-color: lightyellow;
+    color: red
+}
+th{
+    border: solid blue 2px;
+    background-color: gray;
+    color: aliceblue;
+}
+td{
+    border: solid black 2px;
+    background-color: aqua;
+}
