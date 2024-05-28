@@ -1,0 +1,45 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+.box{
+    border: 2px solid blue;
+    /* width and height not works on d:inline  */
+    /* display: inline; */
+    display: inline-block;
+    width: 344px;
+    padding: 45px;
+    margin: 34px;
+}
+
+.box1{
+    /* display: none; */
+    /* visibility:hidden; */
+}
+p{
+    background-color: darkgray;
+    font-weight: bolder;
+    font-size: larger;
+}
+nav ul li{
+    margin: 4px;
+    border: 2px solid red;
+    list-style-type: "🙄 ";
+    /* list-style-position:inside; */
+    /* list-style: decimal-leading-zero; */
+    /* list-style:square inside url("https://user-images.githubusercontent.com/14011726/94132137-7d4fc100-fe7c-11ea-8512-69fgocb65e48.gif")； */
+}
+.b2{
+    border: 2px solid green;
+    height: 200px;
+    width: 50vw;
+
+    /* most of time we use overflow:auto */
+    
+    /* overflow: scroll; */
+    /* overflow: auto; */ 
+    overflow: hidden;
+    /* overflow: visible; */
+    /* overflow: clip; */
+    text-overflow: ellipsis;
+}

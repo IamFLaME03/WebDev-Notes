@@ -1,0 +1,66 @@
+*{
+    margin:0%;
+    padding: 0%;
+}
+ol > li{
+    background-color: red;
+}
+ol{
+    background-color: rgba(0, 0, 0, 0.76);
+    color: aliceblue;
+}
+ol:hover{
+    border: solid yellowgreen 5px ;
+    font-size: large;
+}
+.all{
+    width: 20vw;
+    height: 20vh;
+    font-size: xx-large;
+    font-weight: bolder;
+}
+span:hover{
+    background-color: palevioletred;
+    color: rgb(255, 255, 255);
+}
+#vi:hover{
+    color: blue;
+}
+.d1{
+    text-align: center;
+    height: 80px;
+    border: solid blueviolet 8px;
+    padding: 9px;
+    margin: 10px;
+} 
+.d2{
+    text-align: center;
+    height: 80px;
+    border: solid rgb(172, 146, 18) 8px;
+    padding: 9px;
+    margin: 20px;
+}
+h2{
+    font-style: italic;
+    background-color: grey;
+}
+#fo{
+    border: solid green 2px;
+    width: 400px;
+    height: 200px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-style: oblique;
+    font-weight: 400;
+    text-decoration: underline;
+    text-decoration-color: red ;
+    text-decoration-style: dashed;
+    text-decoration-thickness: 8px;
+    /* text-indent: 3px; */
+    text-overflow: clip;
+    overflow: hidden;
+    /* text-align: center; */
+    line-height: 2;
+    letter-spacing: 1vi;
+    text-transform: capitalize;
+
+}
