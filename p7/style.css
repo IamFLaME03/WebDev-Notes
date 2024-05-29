@@ -8,7 +8,8 @@ p {
     font-weight: bolder;
     font-size: larger;
 }
-.parent{
+
+.parent {
     margin: 12px;
     padding: 12px;
     border: 2px solid blue;
@@ -16,7 +17,8 @@ p {
     /* position: absolute; */
 
 }
-.box { 
+
+.box {
     margin: 3px;
     padding: 3px;
     width: 30vw;
@@ -32,7 +34,7 @@ p {
     left: 130px;
     bottom: 40%;  */
     position: sticky;
-    top:0px;
+    top: 0px;
     left: 0px;
 }
 
@@ -53,4 +55,57 @@ p {
 
 .box4 {
     background-color: yellow;
+}
+
+.cards {
+    border: 2px solid darkblue;
+    /* will not allow to overflow */
+    display: flow-root;
+}
+
+.cards>img {
+    /* float: left; */
+    float: right;
+}
+
+.card {
+    border: 2px solid red;
+}
+
+/* clear use to states that 'no one is float on my right/left/...'  */
+/* card 2 is third child */
+.card:nth-child(3) {
+    /* clear:right; */
+}
+
+.flexParent{
+    height: 300px;
+    width: 300px;
+    margin: 10px;
+    border: 2px solid blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    align-content: center; 
+    gap: 10px 2px;
+}
+.flexChild{
+    height: 32px;
+    width: 32px;
+    background: chocolate;
+    border: 1px solid black;
+    margin: 2px;
+}
+.order-1{
+    order:1;
+}
+.order-2{
+    order:2;
+}
+.order-3{
+    order:3;
+}
+.order-100{
+    order:100;
 }

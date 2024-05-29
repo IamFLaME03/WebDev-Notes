@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layout design</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        header{
+            position: sticky;
+            top: 0;
+            left: 0;
+        }
+        nav{
+            height: 70px;
+            background-color: purple;
+        }
+        .container{
+            height: fit-content;
+        }
+        .innerbox{
+            background-color: rgb(213, 185, 250);
+            justify-content: space-around;
+            display: flex;
+        }
+        .b1, .b2{
+            height: 600px;
+            width: 40vw;
+            margin: 5vw 0;
+        }
+        .b1{
+            background-color: lightgoldenrodyellow;
+        }
+        .b2{
+            background-color: rgb(34, 152, 152);
+        }
+        .b3{
+            width: 80vw;
+            height: 200px;
+            border: 2px solid red;
+            border-radius: 15px;
+            display: flex;
+            margin: auto;
+            /* for safari (below line)*/
+            justify-content: center;
+        }
+        .b3 > h1{
+            align-self: center;
+            /* for chrome (below line)*/
+            text-align: center;
+        }
+        .rest{
+            height:200px;
+        }
+        footer{
+            height: 300px;
+            background-color: blue;
+        }
+        .roller{
+            position: fixed;
+            bottom: 15px;
+            right: 15px;
+        }
+        .roller > img{
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+
+        </nav>
+    </header>
+    <div class="container">
+        <div class="innerbox">
+            <div class="b1">
+    
+            </div>
+            <div class="b2">
+                
+            </div>
+        </div>
+        <div class="b3">
+            <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h1>
+        </div>
+        <div class="rest"></div>
+    </div>
+    <footer>
+    </footer>
+    <div class="roller">
+        <img src="../shared/userlogo.png" alt="img" width="60">
+    </div>
+</body>
+</html>

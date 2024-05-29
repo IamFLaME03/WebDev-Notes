@@ -23,8 +23,12 @@ form{
     color: maroon;
 }
 pre{
-    background-color: darkgray;
+    background-color: rgb(55, 194, 178);
 }
 code{
     background-color: rgb(173, 53, 53);
+}
+h4{
+    background-color: darkgray;
+    padding: 4px;
 }
