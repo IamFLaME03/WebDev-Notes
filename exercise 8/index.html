@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 8</title>
+    <style>
+        .container{
+            width: 50vw;
+            height: 50vh;
+            background-color: cyan;
+            position: relative;
+        }
+        .ball{
+            width: 5vw;
+            height: 5vh;
+            background-color: red;
+            border: 2px solid black;
+            position: absolute;
+            bottom: 0;
+            border-radius: 50%;
+            animation: y-axis 1s linear infinite alternate,
+ x-axis 5s ease-out infinite;
+        }
+        @keyframes x-axis {
+            from{
+
+            }
+            to{
+                transform: translateX(55vw);
+            }
+        }
+        @keyframes y-axis {
+            from{
+                transform: translateY(0vh);
+
+            }
+            to{
+                transform: translateY(-55vh);
+            }
+            /* 0%{
+
+            }
+            10%{
+                transform: translateY(-30vh);
+            }   
+            25%{
+                transform: translateY(0vh);
+            }
+            44%{
+                transform: translateY(-25vh);
+            }
+            55%{
+                transform: translateY(0vh);
+            }
+            62%{
+                transform: translateY(-10vh);
+            }
+            72%{
+                transform: translateY(0vh);
+            }
+            85%{
+                transform: translateY(-5vh);
+            }
+            98%{
+                transform: translateY(0vh);
+            } */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="ball"></div>
+    </div>
+</body>
+</html>

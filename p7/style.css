@@ -1,4 +1,4 @@
-html {
+* {
     margin: 0;
     padding: 0;
 }
@@ -22,7 +22,7 @@ p {
     margin: 3px;
     padding: 3px;
     width: 30vw;
-    height: 400px;
+    height: 100px;
     border: solid rgb(10, 76, 197) 2px;
 }
 
@@ -94,7 +94,7 @@ p {
     height: 32px;
     width: 32px;
     background: chocolate;
-    border: 1px solid black;
+    border: 2px solid black;
     margin: 2px;
 }
 .order-1{
@@ -108,4 +108,43 @@ p {
 }
 .order-100{
     order:100;
+}
+.gridParent{
+    height: 300px;
+    /* width: 700px; */
+    width: 80vw;
+    margin: 10px;
+    border: 2px solid blue; 
+    display: grid;
+    /* grid-template-columns: auto auto;
+    grid-template-rows: auto auto auto 100px; */
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: "nav nav nav"
+                        "side article article"
+                        "foot foot foot";
+}
+.gridChild{
+    /* height: 32px;
+    width: 32px; */
+    background: blueviolet;
+    border: 2px solid black;
+}
+.g1{
+    /* grid-row: 1/2;
+    grid-column: 1/2;  */
+    grid-area: article;
+}
+.g2{
+    grid-area: side;
+}
+.g3{
+    grid-area: foot;
+}
+.g4{
+    grid-area: nav;
+    /* grid-row: 1/3;
+    grid-column: 1/3;  */
+}
+.g5{
+    grid-area: foot;
 }

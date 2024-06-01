@@ -9,8 +9,10 @@ p4 - selectors, box model, margin collapse concept, fonts, colors
 p5 - sizing
 p6 - display properties, List stylings, Overflow properties
 p7 - Position properties, Float & Clear property, Flex box, gap,order properties
-p8 -
+p8 - Transform Properties, Transition, Animation Properties,Object-fit properties, Filters for img
+p9 - 
 
 exercise 3 - create card using html, css only
 exercise 4 - develop navbar
 exercise 5 - layout design
+exercise 8 - ball jumping animation 
