@@ -1,0 +1,50 @@
+.main{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.main p{
+    font-size: 20px;
+    font-weight: 700;
+    width: 70%;
+    text-align: center;
+    padding: 16px;
+}
+.main p:first-child{
+    font-size: 25px;
+}
+.boxes{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
+    width: 400px;
+    gap: 10px;
+}   
+.box{
+    width: 100px;
+    height: 100px;
+    border: 2px solid black;
+    border-radius: 8px;
+}
+#yellow{
+    background-color: yellow;
+}
+#whitesmoke{
+    background-color: whitesmoke;
+}
+#gray{
+    background-color: gray;
+}
+#green{
+    background-color: green;
+}
+#violet{
+    background-color: violet;
+}
+#aqua{
+    background-color: aqua;
+}

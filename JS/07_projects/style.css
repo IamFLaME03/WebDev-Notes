@@ -1,33 +1,3 @@
-*{
-    margin: 0;
-    padding: 0;
-    color:honeydew;
-
-}
-.navbar{
-    background-color:maroon;
-    text-align: center;
-    font-size: 25px;
-    font-weight: 700;
-    padding: 13px 30px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.heading{
-    font-size: 25px;
-    font-weight: 700;
-}
-.home{
-    width: 100px;
-    color: maroon;
-    background-color: honeydew;
-    border-radius: 20px;
-    padding: 8px;
-}
-a{
-    text-decoration: none;
-}
 .main{
     background-color: honeydew;
     height: 100vh;
