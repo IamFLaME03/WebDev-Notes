@@ -1,6 +1,7 @@
 # Dev World
  All the files, which made during leaning a web development are here...
 
+## Index of HTML_CSS Folder
 p1 - basic html layout, h,p tags, anchor tag
 p2 - image, table, list(only html)
 p3 - Inline/Block elements, forms, SVG, iFrame tag(for embed another html page/site), code/pre tag
@@ -10,7 +11,6 @@ p5 - sizing
 p6 - display properties, List stylings, Overflow properties
 p7 - Position properties, Float & Clear property, Flex box, gap,order properties
 p8 - Transform Properties, Transition, Animation Properties,Object-fit properties, Filters for img
-p9 - 
 
 exercise 3 - create card using html, css only
 exercise 4 - develop navbar

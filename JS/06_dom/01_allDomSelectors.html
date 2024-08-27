@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <title>DOM learning</title>
+    <style>
+        .bg-black{
+            background-color: #212121;
+            color: #fff;
+        }
+    </style>
+</head>
+<body class="bg-black">
+    <div >
+        <h1  id="title" class="heading">DOM learning on Chai aur code <span style="display: none;">test text</span></h1>
+        <h2>Lorem ipsum dolor sit.</h2>
+        <h2>Lorem ipsum dolor sit.</h2>
+        <h2>Lorem ipsum dolor sit.</h2>
+        <p>Lorem ipsum dolor sit amet.</p>
+        <input type="password" name="" id="">
+
+        <ul>
+            <li class="list-item">one</li>
+            <li class="list-item">two</li>
+            <li class="list-item">three</li>
+            <li class="list-item">four</li>
+        </ul>
+    </div>
+    <script>
+    // document
+    //     .getElementById(‘name’)
+    //         .id
+    //         .className
+    //         .getAttribute( ‘id’ )
+    //         .getAttribute( ‘class’ )
+    //         .setAttribute( ‘class’ , ‘test test2’ )	//it overwrites always
+
+
+    // Const title = document.getElementById( ‘title’ )
+    // title.style.backgroundcolor = ‘green’
+    // title.style.padding = ‘15px’
+
+
+    // title
+    //     .textContent	//give all text content (including hidden text)
+    //     .innerText	//give all text content
+    //     .innnerHTML	//give all text and HTML inside title
+        
+    // document
+    //     .querySelector( ‘h1‘ )	//select first h1 of document
+    //     .querySelector( ‘#title’ )	
+    //     .querySelector( ‘.heading’ )
+    //     .querySelector( ‘ul’ )
+    //         .querySelector( ‘li' ).querySelector( ‘a' ) 	// chaining
+    // [ note : all selectors are supports in it.]
+    // [ note : query selector only gives one value / select only one element but querySelectorAll selects All ]
+    
+
+    // document
+    //     .querySelectorAll('li')     //it returns NodeList,it's not array but look like array
+    // [note : nodeList supports map forEach method but not map method check it out in its prototype  ]
+    // const temp = document.querySelectorAll('li')
+    // temp.style.color  = 'green'     //not works
+    // temp[0].style.color  = 'green'     //works
+
+    // document
+    //     .getElementsByClassName('list-item')    //return HTMLCollection 
+    //     //if we check prototype there is no looping method like forEach/map
+    //     //for iteration/looping of HTMLCollection we need to convert it in array
+    // temp = document.getElementsByClassName('list-item')
+    // Array.from(temp) //now we have all properties and method of array
+    
+
+    
+
+
+    </script>
+</body>
+</html>
