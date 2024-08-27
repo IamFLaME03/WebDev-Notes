@@ -5,16 +5,16 @@
 .navbar{
     background-color:maroon;
     text-align: center;
-    font-size: 25px;
+    font-size: 20px;
     font-weight: 700;
-    padding: 13px 30px;
+    padding: 10px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     color:honeydew;
 }
 .heading{
-    font-size: 25px;
+    font-size: 20px;
     font-weight: 700;
 }
 .home{

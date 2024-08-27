@@ -1,0 +1,35 @@
+body{
+    background-color: grey;
+}
+h3{
+    margin: 25px;
+}
+form >div> p{
+
+    text-align: center;
+}
+form div {
+    display: flex;
+    gap: 10px;
+    margin: 20px;
+}
+form > input{
+    padding: 5px 16px;
+    margin-left: 100px;
+    font-size: 15px;
+}
+.msg{
+    margin-top: 8px;
+    color: yellowgreen;
+    font-size: 16px;
+    margin-left: 30px;
+}
+.guide {
+    margin: 20px 60px;
+}
+.guideHead{
+    font-weight: 700;
+}
+.guide p {
+    margin: 12px;
+}
