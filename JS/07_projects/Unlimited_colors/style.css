@@ -1,25 +1,33 @@
-body{
-    background-color: grey;
+body {
+    background-color: #303030;
+    color: aliceblue;
 }
-.container{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 80vh;
-    gap: 8px;
-    font-size: 18px;
-    color: honeydew;
+p{
+    font-size: 20px;
+    text-align: center;
+    margin-top: 30px;
+    text-shadow: 0 -4px 5px black;
 }
-.tbox{
-    width: 130px;
-    background-color:orange;
-    height: 40px;
-    border: 2px solid black;
-    border-radius: 8px;
-    color: maroon;
-    font-size: large;
+.btns{
     display: flex;
     justify-content: center;
-    align-items: center;
+    gap: 20px;
+}
+
+.btn {
+    background-color: maroon;
+    color: #ffffff;
+    width: 100px;
+    padding: 7px;
+    font-size: 16px;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin-top: 30px;
+}
+
+.btn:hover {
+    background-color: whitesmoke;
+    color: #000;
+    font-weight: 800;
+    box-shadow: inset 0 0 10px 3px maroon;
 }
