@@ -3,7 +3,6 @@
 
 ## Projects Made in JS Folder
 [Click Here](https://iamflame03.github.io/WebDev-Notes/JS/07_projects/index.html)
-
 ##  Index of HTML_CSS Folder
 p1 - basic html layout, h,p tags, anchor tag <br>
 p2 - image, table, list(only html)<br>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../sharedStyle.css">
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="heading">JavaScript Projects</div>
+        <a href="../index.html" class="home">Home</a>
+    </div>
+    <h2>Number guessing game</h2>
+    <p>Try and guess a random number between 1 and 100.</p>
+    <p>You have 10 attempts to guess the right number.</p>
+    <p id="guess">Guess a number</p>
+    <form class="form">
+        <input type="text" id="guessField" class="guessField">
+        <input type="submit" id="subt" value="Submit guess" class="guessSubmit">
+        <input type="submit" id="playA" value="Play Again" class="guessSubmit">
+    </form>
+
+    <div class="resultParas">
+        <p class="lowOrHi"></p>
+        <p>Previous Guesses: <span class="guesses"></span></p>
+        <p>Guesses Remaining: <span class="remain">10</span></p>
+    </div>
+    </div>
+</body>
+<script src="myScript.js"></script>
+
+</html>
