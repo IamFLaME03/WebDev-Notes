@@ -1,0 +1,17 @@
+body{
+    background-color: #252525;
+    color: aliceblue;
+    font-size: 18px;
+}
+main{
+    height : 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+tr,td,th{
+    border: 2px double aqua;
+    color: aliceblue;
+    padding: 5px 10px;
+    text-align: center;
+}
