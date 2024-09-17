@@ -51,7 +51,11 @@ const promiseFour = new Promise(function(resolve, reject){
     console.log(error);
 }).finally(() => console.log("The promise is either resolved or rejected"))
 
-
+//Note : you can manually invoke promise
+// Promise.resolve()
+// Promise.resolve().catch()
+// Promise.reject()
+// Promise.all()
 
 const promiseFive = new Promise(function(resolve, reject){
     setTimeout(function(){
