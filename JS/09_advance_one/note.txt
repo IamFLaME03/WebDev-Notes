@@ -1,0 +1,2 @@
+you get api from 'randomuser.me' and other sites.
+but sometimes that are complex to understand, because of that we use 'json formatter' site to convert it into simple form also we can validate their

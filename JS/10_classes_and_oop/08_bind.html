@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React</title>
+</head>
+<body>
+    <!-- <button onclick={handleClick()}>Button Clicked</button>  -->
+     <!--Earlier, the above line didn't works and give undefined. thats why we use binding to bind this and prevent to lose it-->
+    <button>Button Clicked</button>
+</body>
+<script>
+    // for more study  : https://www.w3schools.com/js/js_function_bind.asp
+    class React {
+        constructor(){
+            this.library = "React"
+            this.server = "https://localhost:3000"
+
+            //requirement -> get reference of button and on click get massage
+            document
+                .querySelector('button')
+                // .addEventListener('click', this.handleClick)
+                .addEventListener('click', this.handleClick.bind(this))
+        }
+        handleClick(){
+            console.log("button clicked");
+            console.log(this);
+            console.log(this.server);
+        }
+    }
+
+    const app = new React()
+</script>
+</html>
