@@ -1,3 +1,4 @@
+// reduce - Applies a function to reduce the array to a single value.
 const myNums = [1, 2, 3]
 
 // const myTotal = myNums.reduce(function (acc, currval) {
@@ -30,5 +31,4 @@ const shoppingCart = [
 ]
 
 const priceToPay = shoppingCart.reduce((acc, item) => acc + item.price, 0)
-
 console.log(priceToPay);

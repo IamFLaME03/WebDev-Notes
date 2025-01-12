@@ -6,11 +6,10 @@ if (userEmail) {
     console.log("Don't have user email");
 }
 
-// falsy values
-
+// ---------falsy values------------
 // false, 0, -0, BigInt 0n, "", null, undefined, NaN
 
-//truthy values
+//----------truthy values-----------
 // "0", 'false', " ", [], {}, function(){}
 
 // if (userEmail.length === 0) {
@@ -23,19 +22,19 @@ if (Object.keys(emptyObj).length === 0) {
     console.log("Object is empty");
 }
 
-// Nullish Coalescing Operator (??): null undefined
+// -----Nullish Coalescing Operator (??): null,  undefined-------
+//https://www.youtube.com/watch?v=0P_YvC6Gg0c&t=2460s
 
+//for special case where one or more values may be null or undefined also. then it disturbs whole code, for that we use another value 
 let val1;
 // val1 = 5 ?? 10
 // val1 = null ?? 10
 // val1 = undefined ?? 15
-val1 = null ?? 10 ?? 20
-
-
+// val1 = null ?? 10 ?? 20
 
 console.log(val1);
 
-// Terniary Operator
+// --------Terniary Operator----------
 
 // condition ? true : false
 

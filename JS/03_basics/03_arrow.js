@@ -10,43 +10,43 @@ const user = {
 }
 
 // user.welcomeMessage()
-// user.username = "sam"
+user.username = "sam"
 // user.welcomeMessage()
 
-// console.log(this);
+// console.log(this);   //use it in browser
 
-// function chai(){
-//     let username = "hitesh"
-//     console.log(this.username);
-// }
+function chai(){
+    let username = "hitesh"
+    // console.log(this.username);  //not use username
+    // console.log(this);
+}
 
 // chai()
 
-// const chai = function () {
-//     let username = "hitesh"
-//     console.log(this.username);
-// }
+const chai2 = function () {
+    let username = "hitesh"
+    // console.log(this.username);
+}
 
-const chai =  () => {
+const chai3 =  () => {
     let username = "hitesh"
     console.log(this);
 }
-
-
-// chai()
+chai3()
 
 // const addTwo = (num1, num2) => {
 //     return num1 + num2
 // }
 
-// const addTwo = (num1, num2) =>  num1 + num2
+//-------implicit return (parenthesis not used)--------
 
-// const addTwo = (num1, num2) => ( num1 + num2 )
+// const addTwo = (num1, num2) =>  num1 + num2      
 
+// const addTwo = (num1, num2) => ( num1 + num2 )   //for curly braces we must write return, and not in round braces
+
+// const addTwo = (num1, num2) => {username: "hitesh"}      //not work
 const addTwo = (num1, num2) => ({username: "hitesh"})
-
-
-console.log(addTwo(3, 4))
+// console.log(addTwo(3, 4))
 
 
 // const myArray = [2, 5, 3, 7, 8]

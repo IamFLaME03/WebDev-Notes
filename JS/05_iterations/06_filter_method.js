@@ -1,8 +1,7 @@
-//filter method
+//filter method - Creates a new array with elements that pass the given condition
 //note that we can not return any value in forEach method but filter facilitate you to return values from callback function
 
 // const coding = ["js", "ruby", "java", "python", "cpp"]
-
 
 // const values = coding.forEach( (item) => {
 //     //console.log(item);
@@ -10,6 +9,7 @@
 // } )
 
 // console.log(values);
+
 
 const myNums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 

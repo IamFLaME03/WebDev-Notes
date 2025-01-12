@@ -1,0 +1,26 @@
+var evaluate = function(string) {
+    return eval(string);
+}
+
+var func = function(string) {    
+    return (new Function( 'return ' + string)());
+}
+
+console.log(evaluate('2 + 1'));     //3
+console.log(func('2 + 1'));         //3
+
+// Key Differences Between eval() and new Function():
+
+// Scope:
+// eval() executes code in the local scope, so it can access local variables.
+// new Function() creates a function with its own separate scope, not accessing the local scope.
+
+// Security:
+// Both can be dangerous if handling untrusted input, as they allow arbitrary code execution.
+// eval() is more risky since it can access the surrounding scope and potentially manipulate it.
+
+// Performance: new Function() tends to be faster because it doesn't interact with the current scope.
+
+var a = 5;
+console.log(evaluate('a + 1')); // Outputs: 6 (can access 'a')
+console.log(func('a + 1'));     // Error: 'a' is not defined (no access to 'a')

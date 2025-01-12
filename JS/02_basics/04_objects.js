@@ -23,10 +23,11 @@ const obj1 = {1: "a", 2: "b"}
 const obj2 = {3: "a", 4: "b"}
 const obj4 = {5: "a", 6: "b"}
 
-// const obj3 = { obj1, obj2 }
+//--------------Object.assign()---------------
+// const obj3 = { obj1, obj2 }      //add whole obj1 and obj2 as elements of obj3
 // const obj3 = Object.assign({}, obj1, obj2, obj4)
 
-const obj3 = {...obj1, ...obj2}
+const obj3 = {...obj1, ...obj2}  //add element of obj1 and obj2 as elements of obj3
 // console.log(obj3);
 
 
@@ -36,16 +37,18 @@ const users = [
         email: "h@gmail.com"
     },
     {
-        id: 1,
+        id: 2,
         email: "h@gmail.com"
     },
     {
-        id: 1,
+        id: 3,
         email: "h@gmail.com"
     },
 ]
 
-users[1].email
+users[1].email = 'k@gmail.com'
+
+// console.log(users);
 // console.log(tinderUser);
 
 // console.log(Object.keys(tinderUser));
@@ -60,20 +63,31 @@ const course = {
     price: "999",
     courseInstructor: "hitesh"
 }
+//---------Object Destructuring----------
+// course.courseInstructor  //common way to access element
 
-// course.courseInstructor
-
+// const {courseInstructor} = course
 const {courseInstructor: instructor} = course
 
 // console.log(courseInstructor);
 console.log(instructor);
 
+//mostly use in react for example, 
+// const navbar = ({company}) => {      // instead of writing props.company -> {company}
+
+// }
+// navbar(company = 'hitesh')
+
+
+//--------JSON---------
+//it gives error but no issue in code, it is correct
 // {
 //     "name": "hitesh",
 //     "coursename": "js in hindi",
 //     "price": "free"
 // }
 
+//also data may be given in array format.
 [
     {},
     {},

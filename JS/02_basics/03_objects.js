@@ -2,10 +2,9 @@
 // Object.create
 
 // object literals
+//Object.freeze(<obj-name>) - no change happen in obj after it will executes
 
 const mySym = Symbol("key1")
-
-
 const JsUser = {
     name: "Hitesh",
     "full name": "Hitesh Choudhary",
@@ -23,7 +22,7 @@ const JsUser = {
 // console.log(JsUser[mySym])
 
 JsUser.email = "hitesh@chatgpt.com"
-// Object.freeze(JsUser)
+// Object.freeze(JsUser)   //no changes are happen
 JsUser.email = "hitesh@microsoft.com"
 // console.log(JsUser);
 
@@ -35,4 +34,4 @@ JsUser.greetingTwo = function(){
 }
 
 console.log(JsUser.greeting());
-console.log(JsUser.greetingTwo());
+JsUser.greetingTwo()

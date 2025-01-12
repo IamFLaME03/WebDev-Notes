@@ -1,0 +1,46 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+#d1{
+    background-color: red;
+    color: aliceblue;
+    border: 2px solid black;
+    /* width: 299px; */
+    width: 50vw;
+    /* width:50vh; */
+    margin: 32px auto;
+    height: 40vh;
+    font-size: 18px;
+    overflow: scroll;
+}
+
+/* Remember : use rem for font-size and px for everything else. In my mind em is more confusing than it’s really worth and can lead to confusing size-related bugs. */
+
+/* Viewport Width (vw) : A percentage of the full viewport width.
+Viewport Height (vh) : A percentage of the full viewport height.
+Viewport Minimum (vmin) : A percentage of the viewport width or height, whichever is smaller
+Viewport Maximum (vmax) : A percentage of the viewport width or height, whichever is larger */
+
+#d1 > div{
+    /* relative to parent element font size (18 * 0.7 = 12.6px)*/
+    font-size: 0.7em; 
+    border: 2px solid whitesmoke;
+    height: 50%;
+    width: 50%;
+}
+#d1 > div > p{
+    /* relative to root element font size (18 * 0.5 = 9px)*/
+    font-size: 0.5rem; 
+    width: 50%;
+    height: 30%;
+    border: 2px solid purple;
+}
+.d2{
+    background-color: goldenrod;
+    color: darkblue;
+    border: 2px solid black;
+    font-size: 20px;
+    width: 70vmax;
+    height: 50vmin; 
+}

@@ -23,35 +23,42 @@
     //     alert("owl clicked")
     // } 
 
+    
     // history (old techniques)
     // attachEvent()
     // jQuery - onevent
-
+    document.getElementById('owl').addEventListener('click', (e) => {
+        console.log(e);
+    })
     //what to learn for interview
     // type, timestamp, defaultPrevented
     // target, toElement, srcElement, currentTarget,
     // clientX, clientY, screenX, screenY
     // altkey, ctrlkey, shiftkey, keyCode
 
-    //3rd parameter is false -> means evenet propogation is false
+    //3rd parameter is false(default) -> means event propogation is in bubbling mode(inside to outside)
+    
     // document.getElementById('images').addEventListener('click', function(e){
     //     console.log("clicked inside the ul");
     // }, false)
+
     // document.getElementById('owl').addEventListener('click', function(e){
     //     console.log("owl clicked");
     //     e.stopPropagation()  // use to stop propogation 
     // }, false)
+
+    document.getElementById('google').addEventListener('click',function(e){
+        e.preventDefault();
+        e.stopPropagation()
+        console.log("google clicked");
+    }, false)
+
     //now if both are false and if we click on owl image first owl clicked prints and then clicked inside the ul prints. it works from inside to outside. this script that track inside to outside is event propogation and it known as bubbling
-    //if both are true then it works from outside to inside.
+    //if both are true then it works from outside to inside and we can say that they are in capturing mode(propogation context).
 
     // Event bubbling in JavaScript allows events to propagate from the innermost to the outermost elements, enabling multiple event listeners to handle the same event in a hierarchical order. This ensures that both specific and general event handling can be effectively managed. 
     
-    // document.getElementById('google').addEventListener('click',function(e){
-    //     e.preventDefault();
-    //     e.stopPropagation()
-    //     console.log("google clicked");
-    // }, false)
-   
+
     
     document.querySelector('#images').addEventListener('click', function(e){
         console.log(e.target.tagName);

@@ -1,19 +1,18 @@
-//var c = 300
-let a = 300
+// var c = 300
+// let a = 300
 if (true) {
+    var c = 30
     let a = 10
     const b = 20
     // console.log("INNER: ", a);
     
 }
 
-
-
-// console.log(a);
+console.log(a);  //throw error because of let,const variable(which follows scope) 
 // console.log(b);
-// console.log(c);
+console.log(c);
 
-
+//-----------nested-scope---------
 function one(){
     const username = "hitesh"
 
@@ -23,7 +22,7 @@ function one(){
     }
     // console.log(website);
 
-     two()
+    two()
 
 }
 
@@ -44,15 +43,13 @@ if (true) {
 // ++++++++++++++++++ interesting ++++++++++++++++++
 
 
-console.log(addone(5))
-
+console.log(addone(5))  //fuction can be call before declaration
 function addone(num){
     return num + 1
 }
 
-
-
-addTwo(5)
+// addTwo(5)    //but function can not be called if it is stored in variable 
+//In JS variables are very powerfull, it can hold many things
 const addTwo = function(num){
     return num + 2
 }

@@ -1,0 +1,10 @@
+{
+    "configurations": [
+        {
+            "type": "chrome",
+            "name": "http://127.0.0.1:3000/JS/06_dom/01_allDomSelectors.html",
+            "request": "launch",
+            "url": "http://127.0.0.1:3000/JS/06_dom/01_allDomSelectors.html"
+        }
+    ]
+}

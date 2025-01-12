@@ -1,0 +1,29 @@
+/* Article from  matt brictson : https://mattbrictson.com/blog/css-normalize-and-reset */
+/*Josh Comeau’s custom CSS reset :  https://www.joshwcomeau.com/css/custom-css-reset/ */
+
+@import "modern-normalize";
+
+:root {
+    line-height: 1.5;
+}
+h1, h2, h3, h4, h5, figure, p, ol, ul {
+    margin: 0;
+}
+ol[role="list"], ul[role="list"] {
+    list-style: none;
+    padding-inline: 0;
+}
+h1, h2, h3, h4, h5 {
+    font-size: inherit;
+    font-weight: inherit;
+}
+img {
+    display: block;
+    max-inline-size: 100%;
+}
+
+/* But if I am formatting long-form content, like a terms-and-conditions page, I’ll want to “undo” the reset. In those cases you can use the CSS revert keyword.
+.article :where(h1, h2, h3, h4, h5) {
+    all: revert;
+}
+Within an .article, headings are displayed using the original browser default styles, with appropriate font sizes and weights, thanks to revert. */

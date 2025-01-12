@@ -1,4 +1,4 @@
-//for-each as method
+//for-each as method - Executes a function for each array element
 
 const coding = ["js", "ruby", "java", "python", "cpp"]
 // coding.forEach( function (val){

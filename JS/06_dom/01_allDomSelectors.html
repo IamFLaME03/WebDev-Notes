@@ -29,24 +29,25 @@
     </div>
     <script>
     // document
-    //     .getElementById(‘name’)
-    //         .id
+    //     .getElementById(‘name’)      //target an element by id
+    //         .id               
     //         .className
     //         .getAttribute( ‘id’ )
     //         .getAttribute( ‘class’ )
     //         .setAttribute( ‘class’ , ‘test test2’ )	//it overwrites always
 
-
+//----------styling----------
     // Const title = document.getElementById( ‘title’ )
     // title.style.backgroundcolor = ‘green’
     // title.style.padding = ‘15px’
 
-
+//----------fetch inner data----------
     // title
     //     .textContent	//give all text content (including hidden text)
     //     .innerText	//give all text content
     //     .innnerHTML	//give all text and HTML inside title
         
+//------------select element by selectors------------
     // document
     //     .querySelector( ‘h1‘ )	//select first h1 of document
     //     .querySelector( ‘#title’ )	
@@ -56,25 +57,20 @@
     // [ note : all selectors are supports in it.]
     // [ note : query selector only gives one value / select only one element but querySelectorAll selects All ]
     
-
     // document
     //     .querySelectorAll('li')     //it returns NodeList,it's not array but look like array
-    // [note : nodeList supports map forEach method but not map method check it out in its prototype  ]
+    // [note : nodeList supports forEach method but not map method check it out in its prototype  ]
     // const temp = document.querySelectorAll('li')
     // temp.style.color  = 'green'     //not works
     // temp[0].style.color  = 'green'     //works
 
     // document
     //     .getElementsByClassName('list-item')    //return HTMLCollection 
-    //     //if we check prototype there is no looping method like forEach/map
-    //     //for iteration/looping of HTMLCollection we need to convert it in array
+    //if we check prototype there is no looping method like forEach/map
+    //for iteration/looping of HTMLCollection we need to convert it in array
     // temp = document.getElementsByClassName('list-item')
     // Array.from(temp) //now we have all properties and method of array
     
-
-    
-
-
     </script>
 </body>
 </html>

@@ -1,0 +1,187 @@
+<!-- reference link : https://web.dev/articles/ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="This is a page which contains description about vehicles">
+    <link rel="stylesheet" href="style.css">
+    <title>Form Basics</title>
+</head>
+
+<body>
+    <h4>Form :</h4>
+    <form>
+        <h3>Form of Student</h3>
+        <h4>type : Text</h4>
+        <div>
+            <label for="name">Name : </label>
+            <input type="text" id="name"> //for's and id's values are same
+        </div>
+        <div>
+            <label for="city">City :</label>
+            <input type="text" id="city">
+        </div>
+
+        <h4>type : Number</h4>
+        <div>
+            <label for="pincode">Pincode :</label>
+            <input type="number" name="pincode" id="pincode">
+            <!--
+            The name attribute serves as a reference to the data inputted into a form control after submitting it. 
+            
+            Form input should always have a name attribute; otherwise, it will be ignored when the form is submitted.
+            -->
+        </div>
+
+        <h4>type : Email</h4>
+        <label for="user_email">Email Address:</label>
+        <input type="email" id="user_email" name="email" placeholder="you@example.com">
+        
+        <h4>type : URL</h4>
+        <label for="url">url:</label>
+        <input type="url" id="url" name="url" placeholder="https://...">
+
+        <h4>type : password</h4>
+        <label for="user_password">Password:</label>
+        <input type="password" id="user_password" name="password">
+
+        <h4>type : Date</h4>
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob">
+        
+        <h4>type : range</h4>
+        <label for="range">Range :</label>
+        <input type="range" id="range" name="b" value="40" /> 
+
+        <div class="meter">
+            <h4>meter</h4>
+            <label for="fuel">Fuel level:</label>
+            <meter id="fuel" min="0" max="100" low="33" high="66" optimum="80" value="50">at 50/100</meter>
+        </div>
+
+        <div class="progress">
+            <h4>progress</h4>
+            <label for="file">File progress:</label>
+            <progress id="file" max="100" value="100">70%</progress>
+        </div>
+        <!-- output element : https://developer.mozilla.org/en-US/docs/Web/HTML/Element/output -->
+        <div class="Tetxarea">
+            <h4>type : Textarea (Not an input element)</h4>
+            <textarea>Some initial content</textarea>
+            <!-- It can also be resized by clicking and dragging the bottom right corner to make it bigger or smaller. -->
+            <textarea rows="5" cols="50"></textarea>
+        </div>
+
+        <h3>Selection elements</h4>
+            <div class="dropdown">
+                <h4>Drop down Menu:</h4>
+                <label for="car">Car :</label>
+                <select name="Car" id="car">
+                    <option value="mercedes">Mercedes</option>
+                    <option value="tesla">Tesla</option>
+                    <option value="volvo">Volvo</option>
+                    <option value="bmw" selected>BMW</option>
+                    <option value="mini">Mini</option>
+                    <option value="ford">Ford</option>
+                </select>
+                <!-- All the option elements should have a value attribute (otherwise the text content inside is used). This value will be sent to the server when the form is submitted. -->
+                <label for="fashion">Fashion :</label>
+                <select name="fashion" id="fashion">
+                    <optgroup label="Clothing">
+                        <option value="t_shirt">T-Shirts</option>
+                        <option value="sweater">Sweaters</option>
+                        <option value="coats">Coats</option>
+                    </optgroup>
+                    <optgroup label="Foot Wear">
+                        <option value="sneakers">Sneakers</option>
+                        <option value="boots">Boots</option>
+                        <option value="sandals">Sandals</option>
+                    </optgroup>
+                </select>
+            </div>
+
+            <div class="radiobtn">
+                <h4>Radio Buttons :</h4> <!-- have same name -->
+                <input type="radio" id="child" name="ticket_type" value="child" checked>
+                <label for="child">Child</label>
+                <input type="radio" id="adult" name="ticket_type" value="adult">
+                <label for="adult">Adult</label>
+                <input type="radio" id="senior" name="ticket_type" value="senior">
+                <label for="senior">Senior</label>
+            </div>
+
+            <div class="checkboxes">
+                <h4>Check Box :</h4>
+                <input type="checkbox" id="sausage" name="topping" value="sausage">
+                <label for="sausage">Sausage</label>
+
+                <input type="checkbox" id="onions" name="topping" value="onions">
+                <label for="onions">Onions</label>
+
+                <input type="checkbox" id="pepperoni" name="topping" value="pepperoni">
+                <label for="pepperoni">Pepperoni</label>
+
+                <input type="checkbox" id="mushrooms" name="topping" value="mushrooms">
+                <label for="mushrooms">Mushrooms</label>
+
+                <input type="checkbox" id="extra-cheese" name="topping" value="extra-cheese" checked>
+                <label for="extra-cheese">Extra-cheese</label>
+            </div>
+            <h3>Buttons</h3>
+            Note : Always remember that button has default type is submit, when it is created inside form. so don't
+            forget to specify type when we use for other purpose.
+            <h4>Submit button</h4>
+            <button type="submit">Submit</button>
+            <h4>Reset button</h4>
+            <button type="reset">Reset</button>
+            <h4>Generic button</h4>
+            <button type="button">Click to Toggle</button>
+    </form>
+    <!-- fieldset and legend tag for organizing form elements: https://www.theodinproject.com/lessons/node-path-intermediate-html-and-css-form-basics#organizing-form-elements -->
+    <form action="">
+        <fieldset>
+            <legend>Contact Details</legend>
+
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name">
+
+            <label for="phone_number">Phone Number:</label>
+            <input type="tel" id="phone_number" name="phone_number">
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+        </fieldset>
+
+        <fieldset>
+            <legend>Delivery Details</legend>
+
+            <label for="street_address">Street Address:</label>
+            <input type="text" id="street_address" name="street_address">
+
+            <label for="city">City:</label>
+            <input type="text" id="city" name="city">
+
+            <label for="zip_code">Zip Code:</label>
+            <input type="text" id="zip_code" name="zip_code">
+        </fieldset>
+        <fieldset>
+            <legend>What would you like to drink?</legend>
+            <input type="radio" name="drink" id="coffee" value="coffee">
+            <label for="coffee">Coffee</label>
+
+            <input type="radio" name="drink" id="tea" value="tea">
+            <label for="tea">Tea</label>
+        
+            <input type="radio" name="drink" id="soda" value="soda">
+            <label for="soda">Soda</label>
+        </fieldset>
+
+        
+    </form>
+
+
+</body>
+
+</html>
