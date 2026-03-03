@@ -130,23 +130,24 @@ p {
     /* We can set the implicit grid track sizes using the grid-auto-rows and grid-auto-columns properties. */
 
 
-    /* repeat() function : 
+    /* 
+    --> repeat() function : 
     grid-template-columns: 150px 150px 150px 150px 150px;
     can be rewritten as:   grid-template-columns: repeat(5, 150px);
     
-    minmax() function : 
+    --> minmax() function : 
     .grid-container {
         grid-template-rows: repeat(2, 1fr);
         grid-template-columns: repeat(5, minmax(150px, 200px));
     }
-    --> With our grid-template-columns set with minmax() values, each grid item’s width will grow and shrink with the grid container as it resizes horizontally. However, as the grid shrinks, the column tracks will stop shrinking at 150px, and as the grid grows, they will stop growing at 200px
+    With our grid-template-columns set with minmax() values, each grid item’s width will grow and shrink with the grid container as it resizes horizontally. However, as the grid shrinks, the column tracks will stop shrinking at 150px, and as the grid grows, they will stop growing at 200px
 
 
-    clamp() function : clamp(minimum-size, ideal-size, maximum-size)
-    --> Since clamp()’s purpose is to create a flexibly sized track with constraints, we want to use a dynamic value for the “ideal size” argument, and typically a static size for the minimum and maximum size, although it is possible to use a dynamic value here too.
+    --> clamp() function : clamp(minimum-size, ideal-size, maximum-size)
+    Since clamp()’s purpose is to create a flexibly sized track with constraints, we want to use a dynamic value for the “ideal size” argument, and typically a static size for the minimum and maximum size, although it is possible to use a dynamic value here too.
 
 
-    auto-fit and auto-fill
+    --> auto-fit and auto-fill
     use case: You want to give your grid a number of columns that is flexible based on the size of the grid. For example, if our grid is only 200px wide, we may only want one column. If it’s 400px wide, we may want two, and so on. Thankfully, auto-fit and auto-fill are here to save the day!
     .example {
         display: grid;

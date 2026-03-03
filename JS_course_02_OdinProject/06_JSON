@@ -1,0 +1,14 @@
+const obj = JSON.parse('{"name":"John", "age":30, "city":"New York"}');
+console.log(obj);
+// convert text into object
+
+const obj2 = {name: "John", age: 30, city: "New York"};
+const myJSON = JSON.stringify(obj2);
+console.log(myJSON);
+//convert object into string
+
+
+
+// jsonFormmater website  : https://jsonformatter.curiousconcept.com
+
+

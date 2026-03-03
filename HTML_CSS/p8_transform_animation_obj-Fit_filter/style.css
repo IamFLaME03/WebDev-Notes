@@ -32,7 +32,7 @@
 
 
 .box:hover .scaleX {
-  transform: scaleX(2);
+  transform: scaleX(1);
 }
 
 .scaleY {

@@ -1,0 +1,44 @@
+-----------------------------------------------------------------------------------
+
+bundler : 
+    webpack :   webpack
+                webpack-cli
+                webpack-dev-server
+                html-webpack-plugin
+    vite    :   vite
+    (direct create : npm create vite@latest)
+    
+-----------------------------------------------------------------------------------
+
+loader : 
+    style-loader
+    css-loader
+    html-loader
+
+-----------------------------------------------------------------------------------
+
+linter : 
+    eslint  :   @eslint/js
+                eslint
+                eslint-config-airbnb-base
+                eslint-config-prettier
+                eslint-plugin-import    
+
+-----------------------------------------------------------------------------------
+
+formatter : 
+    prettier  
+
+-----------------------------------------------------------------------------------
+
+tester : 
+    jest
+
+-----------------------------------------------------------------------------------
+
+frontend : 
+    react
+    react-dom   :   when working on web
+    react-native:   when working on mobile
+
+-----------------------------------------------------------------------------------

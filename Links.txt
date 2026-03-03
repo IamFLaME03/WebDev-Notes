@@ -1,34 +1,77 @@
+--------------------------------------------------------------------------------------------------------------
+Docs:   
+        react   : https://react.dev
+        freeapi : https://freeapi.app
+        vite    : https://vite.dev
+
+--------------------------------------------------------------------------------------------------------------
+
 cheatsheet : 
-    html : 
-    css : CSS tricks - https://css-tricks.com/almanac/
-    All about Form : https://internetingishard.netlify.app/html-and-css/forms/index.html
-    js : 
+	languages: 
+        html    :       https://acchou.github.io/html-css-cheat-sheet/html-css-cheat-sheet.html#html
+        css     :       CSS tricks - https://css-tricks.com/almanac/
+                        https://acchou.github.io/html-css-cheat-sheet/html-css-cheat-sheet.html#html
+        All about Form :https://internetingishard.netlify.app/html-and-css/forms/index.html
+        js      : 
+	
+	concepts: 
+	DSA-TimeComplexity : https://www.bigocheatsheet.com
 
+--------------------------------------------------------------------------------------------------------------
 
-icons : https://fonts.google.com/icons
+icons : 
+        https://fonts.google.com/icons
         https://feathericons.com
+        https://pictogrammers.com/library/mdi/
+
+        fontawesome : https://www.youtube.com/watch?v=ihTB-aZ-Msk
+                     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
+        hugeicons : https://www.youtube.com/watch?v=td2Y1l4q0gY
+
+--------------------------------------------------------------------------------------------------------------
 
 svg-editor : https://yqnn.github.io/svg-path-editor/
 
+--------------------------------------------------------------------------------------------------------------
 
 color : 
 
-fonts : goggle fonts    
-        font bunny
-        font library
-        adobe fonts - premium font library
+--------------------------------------------------------------------------------------------------------------
 
+fonts : 
+        goggle fonts :https://fonts.google.com
+        font bunny : https://fonts.bunny.net
+        font library:https://fontlibrary.org
+        adobe fonts - premium font library : https://fontlibrary.org
+
+--------------------------------------------------------------------------------------------------------------
 
 form CSS(custom css) : 
         checkbox - https://moderncss.dev/pure-css-custom-checkbox-style/
 
+--------------------------------------------------------------------------------------------------------------
 
 Animate SVG, SVG icons : https://www.youtube.com/watch?v=Zc2V-QsuIag 
 
-https://caniuse.com : “Can I Use” is a great resource to help you validate if new features are supported by browsers.
+--------------------------------------------------------------------------------------------------------------
 
+“Can I Use” is a great resource to help you validate if new features are supported by browsers.
+        https://caniuse.com 
 
-CSS preprocessor - SASS, SCSS, LESS, Stylus - https://www.lambdatest.com/blog/css-preprocessors-sass-vs-less-vs-stylus-with-examples/
+--------------------------------------------------------------------------------------------------------------
+
+Bootstrap docs - https://getbootstrap.com/docs/5.3/getting-started/introduction/
+CSS preprocessor - SASS, SCSS, LESS, Stylus - 
+        https://www.lambdatest.com/blog/css-preprocessors-sass-vs-less-vs-stylus-with-examples/
+ESLint(Linter)  - https://eslint.org
 SASS docs - https://sass-lang.com/documentation/
 Tailwind docs - https://tailwindcss.com/docs
-Bootstrap docs - https://getbootstrap.com/docs/5.3/getting-started/introduction/
+
+--------------------------------------------------------------------------------------------------------------
+
+npm packages : 
+        Linter: npm install --save-dev eslint @eslint/js 
+        formater: npm install --save-dev --save-exact prettier
+
+--------------------------------------------------------------------------------------------------------------
+

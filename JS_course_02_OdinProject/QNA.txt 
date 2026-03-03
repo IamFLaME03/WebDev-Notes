@@ -1,0 +1,13 @@
+When to Use Class-Based Programming
+    Complexity: 
+        If your application is complex and requires managing multiple entities with shared behavior, classes can help organize your code.
+    Team Collaboration: 
+        If you're working in a team, using classes can make it easier for team members to understand and extend the codebase.
+    Future Scalability: 
+        If you anticipate that your application will grow in complexity, starting with a class-based approach can make it easier to scale.
+    When to Consider Other Approaches
+
+    Simplicity: 
+        If your application is simple and doesn't require the overhead of classes, a functional or procedural approach may be more straightforward.
+    Performance: 
+        In some cases, functional programming can lead to more optimized code, especially if you can leverage immutability and pure functions.

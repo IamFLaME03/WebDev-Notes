@@ -1,0 +1,70 @@
+==> -----LINKS-----
+webpack docs : https://webpack.js.org/guides/asset-management/
+
+==>  install Webpack : npm install --save-dev webpack webpack-cli
+
+==> src(source) and dist(distribution) : https://www.theodinproject.com/lessons/javascript-webpack#src-and-dist
+
+- src is where we keep all of our website’s source code,When we run Webpack to bundle our code, it will output the bundled files into the dist directory. 
+- Work inside 'src', build into 'dist', then deploy from there!
+
+- note : with ESM we specify file extensions during importing. but, Webpack will automatically check extensionless file paths 'for .js files' by default.
+
+==> Handling HTML : we use html-webpack-plugin.
+- we do not need to put a script tag in html file in 'src'.
+
+==> Loading CSS : we need two packages, style-loader and css-loader
+- npm install --save-dev style-loader css-loader
+- css-loader will read any CSS files we import in a JavaScript file and store the result in a string. style-loader then takes that string and actually adds the JavaScript code that will apply those styles to the page. Therefore, we need both.
+
+- Back in our webpack.config.js, we need to add these loaders so Webpack knows what to do. Since these aren’t plugins, they go in a separate section:
+- module: {
+    rules: [
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
+      },
+    ],
+  },
+- We must set this order and not the reverse,'css-loader' at the end.
+
+
+
+==> Loading Images: 
+
+- image file used in css : already in url() - css-loader alreay handle this
+- image file used in html : we need to install html-loader. and add array in module.rules :
+    {
+        test: /\.html$/i,
+        loader: "html-loader",
+    }
+
+- images we use in javascript file : no need to install anything, just we need to tell Webpack that these files will be assets by adding an asset/resource rule. and add array in module.rules :
+    {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: "asset/resource",
+    }
+
+
+===> Webpack Dev Server : 
+- npm install --save-dev webpack-dev-server
+- It works by bundling your code behind the scenes,
+we won’t have to keep running npx webpack after each change we make.
+
+- Once set up, npx webpack serve will host our web page on http://localhost:8080/
+- Note that the webpack-dev-server only reads your webpack configuration when you start it. If you change the webpack config file while the dev server is running, it will not reflect those config changes. Use Ctrl + C in the terminal to kill it then rerun npx webpack serve to apply the new config.
+
+
+===> npm scripts : https://www.theodinproject.com/lessons/node-path-javascript-revisiting-webpack#npm-scripts
+
+"script" : {
+  "build": "webpack",
+  "dev": "webpack serve",
+  "<name>" : "<command>",
+  ...
+} 
+
+we can run by : npm run <name>
+
+Note that we drop the npx from the start of the webpack and webpack serve commands when setting them as scripts, as we only needed npx to run them directly in the terminal without npm scripts.
+

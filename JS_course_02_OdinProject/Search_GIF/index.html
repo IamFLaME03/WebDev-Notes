@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            transition: all 0.3s ease-in-out;
+        }
+        body{
+            background: rgb(130, 230, 233);
+        }
+        main {
+            margin: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 16px;
+        }
+        main div{
+            display: flex;
+            gap: 10px;
+        }
+        input{
+            padding: 10px 5px;
+            width: 300px;
+            font-size: 20px;
+        }
+        button{
+            font-size: 20px;
+            padding: 10px 15px;
+        }
+        img{
+            object-fit: contain;
+            max-height: 60vh;
+            width: 90%;
+            max-width: 600px;
+            padding: 10px;
+            border: 2px solid rgb(84, 84, 84);
+            background-color: rgb(163, 223, 225);
+        }
+        .msg{
+            font-size: 18px;
+            color: rgb(150, 12, 12);
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        @media screen and (max-width: 435px) {
+            input{
+                width: 200px;
+                font-size: 16px;
+            }
+            main div{
+                gap: 15px;
+            }
+            button{
+                font-size: 16px;
+                padding: 7px 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div>
+            <input type="text" />
+            <button>Search</button>
+        </div>
+        <p class="msg"></p>
+        <img src="" />
+    </main>
+
+
+    <script>
+        const input = document.querySelector('input');
+        const button = document.querySelector('button');
+        const img = document.querySelector('img');
+        const msg = document.querySelector('.msg');
+        img.src = './hello.webp'
+
+        input.addEventListener('keydown', (e) => {
+            if(e.keyCode === 13){
+                if(!input.value){
+                    img.src = ''
+                }
+                img.src = './loading.gif'
+                printGIF()
+            }
+        })
+
+        button.addEventListener('click', () => {
+            msg.innerHTML = ''
+            if(!input.value){
+                img.src = ''
+            }
+            img.src = './loading.gif'
+            printGIF(input.value)
+        })
+
+        // without - async/await
+        // function printGIF(value) {
+        //     fetch(`https://api.giphy.com/v1/gifs/translate?api_key=7CV87UqpI92xcHuV6Sd0MzapOgtfxuOO&s=${value}`, { mode: 'cors' })
+        //         .then((response) => {
+        //             return response.json()
+        //         })
+        //         .then((res) => {
+        //             console.log(res);
+        //             if (res.meta.msg === 'OK')
+        //                 img.src = res.data.images.original_still.url;
+        //             else
+        //                 return Promise.reject(res.meta.msg)
+        //         }).catch((err) => {
+        //             msg.innerHTML = `Error : ${err}` ;
+        //         })
+        // }
+
+        // with - async/await
+        async function printGIF(value){
+            try {
+                const res = await fetch(`https://api.giphy.com/v1/gifs/translate?api_key=7CV87UqpI92xcHuV6Sd0MzapOgtfxuOO&s=${value}`, {mode: 'cors'})
+                const fetchedData = await res.json()
+                console.log(fetchedData.data.images.original_still.url);
+                
+                if(fetchedData.meta.msg === 'OK')
+                    img.src = fetchedData.data.images.original_still.url;
+                else
+                    throw fetchedData.meta.msg;
+            } catch (error) {
+                msg.innerHTML = `Error : ${error}`;
+            }
+        }
+
+
+    </script>
+</body>
+</html>

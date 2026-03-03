@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .carousel {
+            position: relative;
+            width: 90vw;
+            height: 50vh;
+            overflow: hidden;
+            margin: 50px auto;
+        }
+
+        .slides {
+            display: flex;
+            width: calc(90vw * 5);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .slide {
+            width: 90vw;
+            height: 50vh;
+            flex-shrink: 0;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 30px;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 100;
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+
+        .arrow.left {
+            left: 10px;
+        }
+
+        .arrow.right {
+            right: 10px;
+        }
+
+        .dots {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+        }
+
+        .dot {
+            height: 12px;
+            width: 12px;
+            margin: 0 5px;
+            background: #999;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .dot.active {
+            background: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="carousel">
+        <!-- slides -->
+        <div class="slides">
+            <div class="slide">
+                <img src="./img/img1.jpg" alt="Image 1" />
+            </div>
+            <div class="slide">
+                <img src="img/img2.jpg" alt="Image 2" />
+            </div>
+            <div class="slide">
+                <img src="img/img3.jpg" alt="Image 3" />
+            </div>
+            <div class="slide">
+                <img src="img/img4.jpg" alt="Image 4" />
+            </div>
+            <div class="slide">
+                <img src="img/img5.jpg" alt="Image 5" />
+            </div>
+        </div>
+
+        <!-- navigation buttons -->
+        <button class="arrow left">&#10094;</button>
+        <button class="arrow right">&#10095;</button>
+
+        <div class="dots">
+            <div class="dot active"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+    </div>
+    
+    <script>
+        let currentSlide = 0;
+        let slideInterval;
+
+        const slidesContainer = document.querySelector(".slides");
+        const slideElements = document.querySelectorAll(".slide");
+        const dots = document.querySelectorAll(".dot");
+        const totalSlides = slideElements.length;
+        const slideWidth = slideElements[0].clientWidth;
+        const leftArrow = document.querySelector(".arrow.left");
+        const rightArrow = document.querySelector(".arrow.right");
+
+        function goToSlide(n) {
+            currentSlide = (n + totalSlides) % totalSlides;
+            slidesContainer.style.transform = `translateX(${-slideWidth * currentSlide
+                }px)`;
+            updateDots();
+        }
+
+        function updateDots() {
+            dots.forEach((dot) => dot.classList.remove("active"));
+            dots[currentSlide].classList.add("active");
+        }
+
+        function nextSlide() {
+            goToSlide(currentSlide + 1);
+        }
+        function previousSlide() {
+            goToSlide(currentSlide - 1);
+        }
+
+        function startSlideShow() {
+            slideInterval = setInterval(nextSlide, 3000);
+        }
+        function stopSlideShow() {
+            clearInterval(slideInterval);
+        }
+
+        leftArrow.addEventListener("click", () => {
+            stopSlideShow();
+            previousSlide();
+            startSlideShow();
+        });
+        rightArrow.addEventListener("click", () => {
+            stopSlideShow();
+            nextSlide();
+            startSlideShow();
+        });
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener("click", () => {
+                stopSlideShow();
+                goToSlide(index);
+                startSlideShow();
+            });
+        });
+
+        startSlideShow();
+    </script>
+</body>
+
+</html>

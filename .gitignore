@@ -1,0 +1,14 @@
+Udemy Course 
+React
+Full-Stack Developer Roadmap.png
+
+
+
+node_modules/
+dist/
+build/
+*.log
+.DS_Store
+.env
+.idea/
+.vscode/

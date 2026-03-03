@@ -1,0 +1,61 @@
+// for handling async tasks : we can use callback... but make func hell so we use promise(a obj for async task handling) that take func having two arguments response and reject. and response is taken as parameter of func of .then func and reject is on .catch func. but here .then is also still kind of callbackey. any code that come after promise still needs to be in final .then() callback. 
+
+// callback hell : 
+                    moveTo(50, 50, function(){
+                        moveTo(20, 100, function(){
+                            moveTo(100, 100, function(){
+                                moveTo(20, 50, function(){
+                                    //done
+                                })
+                            })
+                        })
+                    })
+// promise
+                    moveTo (50, 50)
+                    • then (() => moveTo(20, 100))
+                    • then (() => moveTo(100, 100))
+                    • then (( => moveTo(20, 50))
+// async - await
+                    async function animate() {
+                        await moveTo (50, 50) ;
+                        await moveTo (20, 100); 
+                        await moveTo (100, 200); 
+                        await moveTo(2, 10);
+                    }
+
+// slow...
+                    async function(){
+                        const d1 = await axios.get('//api url')
+                        const d2 = await axios.get('//api url')
+                        const result = `
+                            <h1>${d1.name}</h1>
+                            <h2>${d2.name}</h2>
+                        `
+                    }
+// here we do async task one by one(waiting for completing another)
+// improvement : both async task executing parallel and wait for both to completing.
+                    async function(){
+                        const d1Promise = axios.get('//api url')
+                        const d2Promise = axios.get('//api url')
+
+                        const [d1, d2] = await Promise.all([d1Promise, d2Promise])
+                        const result = `
+                            <h1>${d1.name}</h1>
+                            <h2>${d2.name}</h2>
+                        `
+                    }
+// async func is syntatic sugar on promise. async func return promise response. but for error handling it becomes ugly. 
+// we can attech .catch func like promise at the end of async function. 
+// best option is wrap it in try catch block.
+
+// create HOF (High order function) :
+                    function handleError (fn) {
+                        return function (...params) {
+                            return fn(...params).catch(function (err) {
+                                //do something with error
+                                console.log('Oops! ,', err)
+                            })
+                        }
+                    }
+//shorthand
+                    const handleError = fn => (...params) => fn(...params).catch(console.error) 
