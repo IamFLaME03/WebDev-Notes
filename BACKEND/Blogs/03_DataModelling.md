@@ -54,6 +54,8 @@ const userSchema = new mongoose.Schema(
 
 export const User = mongoose.model("User", userSchema)
 //here we given name User, but in mongoDB it converts into users(lowercase + plural)
+// Interview Question : if i write Category it store in mongoDB as categories or else if i write categories then mongoose don't change it cause its already plural+lowercased. but we use to write Category cause we use it to give references so writing categories is not standard practice.
+
 ```
 
 ### Todo Model
