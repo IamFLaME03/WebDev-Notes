@@ -1,6 +1,7 @@
 # Backend Development Introduction
 
-### There are two major components : 
+### There are two major components
+
 1. A Programming language - Java, JS, php, golang, c++
 2. A Database - Mongo, MySQL, Postgres, sqlite
 
