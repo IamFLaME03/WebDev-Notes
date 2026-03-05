@@ -22,8 +22,10 @@
 
 ### Folder Structure
 
-```backend/
-src/
+``` text
+
+backend/src/
+
 ├── index.js      // Entry point of the application, connects to the database and starts the server.
 ├── app.js     // Sets up the Express application, including middleware and routes.
 ├── constants.js     // Contains constant values used throughout the application, such as error messages and configuration settings.
@@ -34,3 +36,5 @@ src/
 ├── middlewares/     // Contains middleware functions that can be used to process requests and responses, such as authentication and error handling.
 ├── utils/     // Contains utility functions that can be used throughout the application, such as data validation and formatting.
 ├── More(depends)/   
+
+```

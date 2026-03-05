@@ -10,10 +10,10 @@
 
 1. Initialize Project: Use npm init to create a package.json file which tracks your dependencies.
 
-
 2. Install Express: npm install express
 
 3. Create a Simple Server: Writing the entry point (e.g., index.js) to handle basic routing and listen on a specific port.
+
 ```js
 // Import the Express framework
 const express = require('express')
@@ -38,8 +38,7 @@ app.listen(port, () => {
 
 ```
 
-4. Local Testing:
-Running the server on localhost to ensure functionality before moving to the cloud.
+4. Local Testing: Running the server on localhost to ensure functionality before moving to the cloud.
 
 ### Deployment Strategy
 

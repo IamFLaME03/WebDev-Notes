@@ -75,3 +75,13 @@ npm packages :
 
 --------------------------------------------------------------------------------------------------------------
 
+Productivity : 
+
+Data Modelling : 
+        moonmodeler/luna modeler : https://www.datensen.com/moon-modeler-for-databases.html
+        eraser.io : https://www.eraser.io
+Online Code editor(provide virtual environments) : 
+        stackblitz
+        codesandbox
+        github codespaces
+        replit
