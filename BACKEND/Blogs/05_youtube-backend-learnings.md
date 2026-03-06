@@ -33,3 +33,24 @@ This file contains concepts, points that i learned while building youtube-backen
       .env
       .env*
    ```
+
+## [How to connect database in MERN](https://youtu.be/w4z8Py-UoNk?si=784Qivqlsy4A0eGd)
+
+- we stores confidential and sensitive info in `.env` and other thing like DB name, port in `constants.js` file
+
+- There are two approach for connecting DB. 
+   1. All connection code fuction inside `index.js` file adn call there.
+   2. All code inside separate file `db/` and export it to `index.js` and run it
+
+- **Note that** Database is always in another continent means it takes time and second point is there are chances to face failures or error while working with DB
+
+   *"So always use try-catch or use promise (hadles error by resolve-reject) and use async-await"*
+
+- When professionals write IIFE(Immediately Invoked Function Expression), they use semicolon before it for cleaning purpose if editor missed semicolon in previous line.
+
+   ```js
+   ;( async () => {} )()
+   ```
+
+## [Custom API response and Error handling](https://youtu.be/S5EpsMjel-M?si=xB17NpY1rz_ABIg8)
+
