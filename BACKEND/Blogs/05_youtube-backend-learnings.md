@@ -52,5 +52,71 @@ This file contains concepts, points that i learned while building youtube-backen
    ;( async () => {} )()
    ```
 
+- Async function returns Promise when asynchronous task get done, so we can use .then() after it
+
 ## [Custom API response and Error handling](https://youtu.be/S5EpsMjel-M?si=xB17NpY1rz_ABIg8)
 
+- Implemeting CORS - a security mechanism that allows a server to explicitly specify which external origins (domains, protocols, or ports) can access its resources
+
+```js
+   import cors from "cors"
+
+   app.use(cors({
+   origin: process.env.CORS_ORIGIN,
+   credentials: true,
+}))
+```
+
+Mostly we use app.use() to add middleware or do configurations.
+
+- `req.body` Contains key-value pairs of data submitted in the request body. By default, it is undefined, and is populated when you use **body-parsing middleware** such as `express.json()` or `express.urlencoded()`
+
+- We use [express.json()](https://expressjs.com/en/5x/api.html#express.json) to parse incomming requests with JSON payloads.
+- Sometimes we get data from URL, there is different encoder/decoder mechanism like  whitespace converts into %20 or +, For handling these data we use [express.urlencoded()](https://expressjs.com/en/5x/api.html#express.urlencoded)
+
+- [express.static](https://expressjs.com/en/5x/api.html#express.static) serves static files and is based on serve-static
+
+- We use `cookie-parser` to do secure CRUD operation in user's device, it gives way to securely set cookies on user's device, only server can read/write that cookies
+
+```js
+   app.use(express.json({
+      limit: "16kb"
+   }))
+
+   app.use(express.urlencoded({
+      extended: true, // enable parsing nested objects
+      limit: "16kb"
+   }))
+
+   app.use(express.static("public")) // public is foldername
+
+   app.use(cookieParser())
+```
+
+- Now we will create many async function wrapped in try-catch block, so why not making a utillity that handle these functions. `/src/utils/asyncHandler.js`
+
+```js
+// Two ways :
+// using Promise 
+const asyncHandler = (requestHandler) => {
+   (req, res, next) => {
+      Promise
+         .resolve(requestHandler(req, res, next))
+         .catch((error) => next(error))
+   }
+}
+
+// using async-await and try-catch block
+const asyncHandler = (fn) => async (req, res, next) => {
+   try {
+      await fn(req, res, next)
+   } catch (error) {
+      res.status(error.code || 500).json({
+         success: false,
+         message: error.message
+      })
+   }
+}
+```
+
+- Node.js provide [Error class](https://nodejs.org/api/errors.html), but for custom error handling we create ApiError class that overwrites the Error class and also create ApiResponse class to handle response
