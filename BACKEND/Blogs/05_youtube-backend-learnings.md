@@ -2,7 +2,7 @@
 
 This file contains concepts, points that i learned while building youtube-backend project from chaiaurcode yt channel.
 
-## [How to setup professional backend project](https://youtu.be/9B4CvtzXRpc?si=qCptsK8RANoudvoM)
+## [6. How to setup professional backend project](https://youtu.be/9B4CvtzXRpc?si=qCptsK8RANoudvoM)
 
 - **Image/file Storing** : When we use any third party service like azure,aws or cloudinary, we use to store files/photos temporary store on our server, for in case if connection lost we have that files and later post them on third party service by using third process.(Some organisation use to directly upload, So it depends on organisation)
 
@@ -13,7 +13,7 @@ This file contains concepts, points that i learned while building youtube-backen
 - **Use to install prettier package** because when we write professional grade code, we will write code along with other developers and may be someone have not prettier VS code extension. So when we merge everything on github, there are so many conflicts. Thats why it is important for the team to be on the same page. Not just a extension, the settings of prettier also have to be added on a basis of project.
 
    - after installing prettier package, there are some files we have to add manually.
-   
+
    ```js
       // .prettierrc
       {
@@ -34,7 +34,7 @@ This file contains concepts, points that i learned while building youtube-backen
       .env*
    ```
 
-## [How to connect database in MERN](https://youtu.be/w4z8Py-UoNk?si=784Qivqlsy4A0eGd)
+## [7. How to connect database in MERN](https://youtu.be/w4z8Py-UoNk?si=784Qivqlsy4A0eGd)
 
 - we stores confidential and sensitive info in `.env` and other thing like DB name, port in `constants.js` file
 
@@ -54,7 +54,7 @@ This file contains concepts, points that i learned while building youtube-backen
 
 - Async function returns Promise when asynchronous task get done, so we can use .then() after it
 
-## [Custom API response and Error handling](https://youtu.be/S5EpsMjel-M?si=xB17NpY1rz_ABIg8)
+## [8. Custom API response and Error handling](https://youtu.be/S5EpsMjel-M?si=xB17NpY1rz_ABIg8)
 
 - Implemeting CORS - a security mechanism that allows a server to explicitly specify which external origins (domains, protocols, or ports) can access its resources
 
@@ -120,3 +120,61 @@ const asyncHandler = (fn) => async (req, res, next) => {
 ```
 
 - Node.js provide [Error class](https://nodejs.org/api/errors.html), but for custom error handling we create ApiError class that overwrites the Error class and also create ApiResponse class to handle response
+
+## [9. User and Video model with hooks and JWT](https://youtu.be/eWnZVUXMq8k?si=2flN75HDrW5T8fUt)
+
+```js
+const userSchema = new mongoose.Schema({
+  username: {
+    type: String,
+    required: true,
+    index: true   // Indexing
+  }
+});
+```
+
+- **Without index:** MongoDB scans every document in the collection (Full Collection Scan)
+- **With index:** MongoDB directly jumps to the matching value.
+- Indexes also speed up sorting.
+- Indexes improve read performance but slightly slow writes (insert/update), because MongoDB also updates the index. So **don't index every field, only frequently searched ones**
+
+### [mongoose-aggregate-paginate-v2](https://www.npmjs.com/package/mongoose-aggregate-paginate-v2) package
+
+this package allows us to write aggregations queries
+> [Docs of Aggregation Pipeline in MongoDB ](https://www.w3schools.com/mongodb/mongodb_aggregations_intro.php)
+
+### [bcrypt](https://www.npmjs.com/package/bcrypt) and [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken) package
+
+- bcrypt helps to hash a password
+- jsonwebtoken helps to create tokens - https://www.jwt.io
+
+### [pre hook in mongoose](https://mongoosejs.com/docs/middleware.html#pre)
+Pre middleware functions are executed one after another.
+
+```js
+const schema = new Schema({ /* ... */ });
+schema.pre('save', function() {
+  // do stuff
+});
+```
+
+**Note :** make sure don't write schema.pre('save', () => {}). Here callback function don't get referense of this. It don't have context of userSchema
+
+- we can check if field is modified or not using `isModified`. For example
+
+```js
+userSchema.pre("save", async function (next) {
+   if(!this.isModified("password")) return next()
+   
+   this.password = bcrypt.hash(this.password, 10)
+   next()
+})
+```
+
+- We can create custom methods in mongoose, by directly assigning function to `schema.methods`
+
+```js
+userSchema.methods.isPasswordCorrect = async function (password) {
+   return await bcrypt.compare(password, this.password)
+}
+```
