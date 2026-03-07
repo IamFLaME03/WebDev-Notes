@@ -16,7 +16,7 @@ This file contains concepts, points that i learned while building youtube-backen
 
 - **Prefere installing prettier package** because when we write professional grade code, we will write code along with other developers and may be someone have not prettier VS code extension. So when we merge everything on github, there are so many conflicts. Thats why it is important for the team to be on the same page. Not just a extension, the settings of prettier also have to be added on a basis of project.
 
-   - after installing prettier package, there are some files we have to add manually.
+  - after installing prettier package, there are some files we have to add manually.
 
    ```js
       // .prettierrc
@@ -157,7 +157,7 @@ const userSchema = new mongoose.Schema({
 ### [mongoose-aggregate-paginate-v2](https://www.npmjs.com/package/mongoose-aggregate-paginate-v2) package
 
 this package allows us to write aggregations queries
-> [Docs of Aggregation Pipeline in MongoDB ](https://www.w3schools.com/mongodb/mongodb_aggregations_intro.php)
+> [Docs of Aggregation Pipeline in MongoDB](https://www.w3schools.com/mongodb/mongodb_aggregations_intro.php)
 
 ---
 
@@ -243,3 +243,51 @@ const storage = multer.diskStorage({
 
 export const upload = multer({ storage: storage })
 ```
+
+## [11. HTTP Header and methods](https://youtu.be/qgZiUvV41TI?si=Le3i1igJGVqL4v44)
+
+- **Http headers :** when we send http request we share some meta-data also.
+
+  - metadata : data about data... key-value pais set along with request-response
+- Headers use for caching, authentication, manage state
+  - Request header -> from client
+  - Response header -> from server
+  - Representation header -> encoding/compression
+  - Payload header -> data
+
+---
+
+- Http methods:
+
+  - GET : retrive a resource
+  - HEAD : no message body (response headers only)
+  - OPTIONS : what operation are available
+  - TRACE : loopback test(get some data)
+  - POST : interect with resourse (mostly add)
+  - PUT : replace a whole resource
+  - PATCH : change/replace specific part of resource
+  - DELETE : remove a resource
+
+---
+
+- Http Status Codes:
+  - 1xx -> Informational
+  - 2xx -> Success
+  - 3xx -> Redirectional
+  - 4xx -> Client Error
+  - 5xx -> Server Error
+  - Examples:
+    - 101 Continue
+    - 102 Processing
+    - 200 Ok
+    - 201 Created
+    - 202 Accepted
+    - 307 temporary redirect
+    - 308 permanant redirect
+    - 400 Bad request
+    - 401 Unauthorised request
+    - 402 Payment Required request
+    - 404 Not Found
+    - 500 Internal Server Error
+    - 504 Gateway Timeout
+
