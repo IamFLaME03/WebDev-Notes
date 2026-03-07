@@ -291,3 +291,45 @@ export const upload = multer({ storage: storage })
     - 500 Internal Server Error
     - 504 Gateway Timeout
 
+## [12. Route and Controller with debugging](https://youtu.be/HqcGLJSORaA?si=rQ7qtau9rgs2DZFi)
+
+Common syntax we follows to use our asyncHandler in controllers
+
+```js
+import {asyncHandler} from "../utils/asyncHandler.js"
+
+export const registerUser = asyncHandler( async (req, res) => {
+   res.status(200).json({
+      message: "ok"
+   })
+})
+```
+
+---
+
+We import our all routes inside app.js. and we use app.use('/user' , userRouter) middleware instead of app.get() because before we using it inside index.js, No
+
+### app.js
+
+```js
+// routes import 
+import userRouter from "./routes/user.routes.js"
+
+// routes declaration
+app.use('/api/v1/users', userRouter)
+```
+
+- defining api and version inside path is standard practice
+
+### user.router.js
+
+```js
+import { Router } from "express";
+import { registerUser } from "../controllers/user.controller.js";
+
+const router = Router()
+
+router.route("/register").post(registerUser)
+
+export default router
+```
