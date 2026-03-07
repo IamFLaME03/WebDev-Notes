@@ -6,11 +6,15 @@ This file contains concepts, points that i learned while building youtube-backen
 
 - **Image/file Storing** : When we use any third party service like azure,aws or cloudinary, we use to store files/photos temporary store on our server, for in case if connection lost we have that files and later post them on third party service by using third process.(Some organisation use to directly upload, So it depends on organisation)
 
+---
+
 - We can not push empty folder on git, but it is important for us to track and push these folders. There is standard approach we follows to create a empty file `.gitkeep` inside the folder
 
 > gitignore generator : https://mrkandreev.name/snippets/gitignore-generator/
 
-- **Use to install prettier package** because when we write professional grade code, we will write code along with other developers and may be someone have not prettier VS code extension. So when we merge everything on github, there are so many conflicts. Thats why it is important for the team to be on the same page. Not just a extension, the settings of prettier also have to be added on a basis of project.
+---
+
+- **Prefere installing prettier package** because when we write professional grade code, we will write code along with other developers and may be someone have not prettier VS code extension. So when we merge everything on github, there are so many conflicts. Thats why it is important for the team to be on the same page. Not just a extension, the settings of prettier also have to be added on a basis of project.
 
    - after installing prettier package, there are some files we have to add manually.
 
@@ -38,19 +42,25 @@ This file contains concepts, points that i learned while building youtube-backen
 
 - we stores confidential and sensitive info in `.env` and other thing like DB name, port in `constants.js` file
 
-- There are two approach for connecting DB. 
+- There are two approach for connecting DB.
    1. All connection code fuction inside `index.js` file adn call there.
    2. All code inside separate file `db/` and export it to `index.js` and run it
+
+---
 
 - **Note that** Database is always in another continent means it takes time and second point is there are chances to face failures or error while working with DB
 
    *"So always use try-catch or use promise (hadles error by resolve-reject) and use async-await"*
+
+---
 
 - When professionals write IIFE(Immediately Invoked Function Expression), they use semicolon before it for cleaning purpose if editor missed semicolon in previous line.
 
    ```js
    ;( async () => {} )()
    ```
+
+---
 
 - Async function returns Promise when asynchronous task get done, so we can use .then() after it
 
@@ -66,6 +76,8 @@ This file contains concepts, points that i learned while building youtube-backen
    credentials: true,
 }))
 ```
+
+---
 
 Mostly we use app.use() to add middleware or do configurations.
 
@@ -93,7 +105,9 @@ Mostly we use app.use() to add middleware or do configurations.
    app.use(cookieParser())
 ```
 
-- Now we will create many async function wrapped in try-catch block, so why not making a utillity that handle these functions. `/src/utils/asyncHandler.js`
+---
+
+- Mostly we will create many async function wrapped in try-catch block, so why not making a utillity that handle these functions. `/src/utils/asyncHandler.js`
 
 ```js
 // Two ways :
@@ -138,17 +152,24 @@ const userSchema = new mongoose.Schema({
 - Indexes also speed up sorting.
 - Indexes improve read performance but slightly slow writes (insert/update), because MongoDB also updates the index. So **don't index every field, only frequently searched ones**
 
+---
+
 ### [mongoose-aggregate-paginate-v2](https://www.npmjs.com/package/mongoose-aggregate-paginate-v2) package
 
 this package allows us to write aggregations queries
 > [Docs of Aggregation Pipeline in MongoDB ](https://www.w3schools.com/mongodb/mongodb_aggregations_intro.php)
 
+---
+
 ### [bcrypt](https://www.npmjs.com/package/bcrypt) and [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken) package
 
 - bcrypt helps to hash a password
-- jsonwebtoken helps to create tokens - https://www.jwt.io
+- jsonwebtoken helps to create tokens : [jwt.io](https://www.jwt.io)
+
+---
 
 ### [pre hook in mongoose](https://mongoosejs.com/docs/middleware.html#pre)
+
 Pre middleware functions are executed one after another.
 
 ```js
@@ -159,6 +180,8 @@ schema.pre('save', function() {
 ```
 
 **Note :** make sure don't write schema.pre('save', () => {}). Here callback function don't get referense of this. It don't have context of userSchema
+
+---
 
 - we can check if field is modified or not using `isModified`. For example
 
@@ -171,10 +194,52 @@ userSchema.pre("save", async function (next) {
 })
 ```
 
+---
+
 - We can create custom methods in mongoose, by directly assigning function to `schema.methods`
 
 ```js
 userSchema.methods.isPasswordCorrect = async function (password) {
    return await bcrypt.compare(password, this.password)
 }
+```
+
+## [10. How to upload a file in backend](https://youtu.be/6KPXn2Ha0cM?si=P3RKTOnj_8W7_r4F)
+
+When we want file upload, we use one of two packages: 1. `express-fileupload` and 2. `multer`. Currently multer is popular. ([Multer DOCS](https://www.npmjs.com/package/multer))
+
+- Monstly in production, they choose to step file upload, first they upload on server and then upload to cloudinary or other service, so if any error face they can reupload file from own server
+
+---
+
+- Node js provide built in fs(`file system`) library. Thay have many methods we can use to perform file operation like read, write, open, change permission or unlink file
+
+- [fsPromises.unlink(path)](https://nodejs.org/api/fs.html#fspromisesunlinkpath) : If path refers to a symbolic link, then the link is removed without affecting the file or directory to which that link refers. If the path refers to a file path that is not a symbolic link, the file is deleted
+
+---
+
+- We created middleware for using multer, we can create normal function and use directly - It is also right but, we want this function to be called whenever we want to use file upload facility
+
+---
+
+### Use of multer
+
+- here we can get json data from req, But you can get access of file inside which you get all files uploaded by user
+- That's *why we use multer* because we already configured for accessing json data from request body but there is no file.
+
+```js
+import multer from "multer";
+
+const storage = multer.diskStorage({
+   // cb => callback fn
+   destination: function (req, file, cb) {
+      cb(null, '/tmp/my-uploads')
+   },
+   filename: function (req, file, cb) {
+      const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
+      cb(null, file.fieldname + '-' + uniqueSuffix)
+   }
+})
+
+export const upload = multer({ storage: storage })
 ```
