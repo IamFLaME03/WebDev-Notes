@@ -333,3 +333,233 @@ router.route("/register").post(registerUser)
 
 export default router
 ```
+
+## [Logic Building - Controllers](https://youtu.be/VKXnSwNm_lE?si=QqpBxTJCOsDfCo5n)
+
+- Mostly All logic code we write inside controllers. Before writing actual code, define steps that we will follow.
+
+- `req.files?.avatar[0]?.path` is commonly used when handling **file uploads with Multer in a Node.js backend (often with Express.js).
+
+- `req` = **Request object**
+
+It contains everything sent from the client:
+
+* body data → `req.body`
+* params → `req.params`
+* query → `req.query`
+* uploaded files → `req.file` or `req.files`
+
+Example request from frontend:
+
+```html
+<input type="file" name="avatar" />
+```
+
+---
+
+`req.files` When using multer like this:
+
+```js
+upload.fields([
+  { name: "avatar", maxCount: 1 },
+  { name: "gallery", maxCount: 5 }
+])
+```
+
+Then multer stores uploaded files inside `req.files`
+
+Example structure:
+
+```js
+req.files = {
+  avatar: [
+    {
+      fieldname: "avatar",
+      originalname: "profile.png",
+      encoding: "7bit",
+      mimetype: "image/png",
+      destination: "uploads/",
+      filename: "17123456789.png",
+      path: "uploads/17123456789.png",
+      size: 34567
+    }
+  ]
+}
+```
+
+`req.files?.avatar[0]?.path`: This returns the **file location on the server**.
+
+- let `user` is document fetched from mongoDB, Now when we use user.save() it kicks off all validation like password is required: true then it throw error to add password. So prevent it we disable validation process by `validateBeforeSave: false`
+
+```js
+const user = await User.findById(userId)  
+const accessToken = user.generateAccessToken()
+const refreshToken = user.generateRefreshToken() 
+
+user.refreshToken = refreshToken
+user.save({validateBeforeSave: false})
+```
+
+- if we use user.findByIdAndUpdate , it returns the old document, but if we pass `{new: true}` as argument, it return updated document.
+
+```js
+const user = User.findByIdAndUpdate(
+   req.user?._id,
+   {
+      $set: {
+         fullName,
+         email: email
+      }
+   },
+   {new: true} 
+).select("-password")
+```
+
+## [MongoDB Aggregation Pipeline](https://youtu.be/fDTf1mk-jQg?si=-rfDWebqeofenBDl)
+
+- We have two Models user(username, password, watchhistory, password, avatar...) and subscription(channel(type:user), subscriber(type:user)) and task is joining these two models, so we have to use aggregation
+
+### [Aggregation Pipeline Docs](https://www.mongodb.com/docs/manual/aggregation/)
+
+- Aggregation operations process multiple documents and return computed results. You can use aggregation operations to:
+  - Group values from multiple documents together.
+  - Perform operations on the grouped data to return a single result.
+  - Analyze data changes over time.
+  - Query the most up-to-date version of your data.
+
+### How to write aggregation pipeline
+
+```js
+// db.routes.aggregate() take an array
+// Each object represents diffrent stage
+db.routes.aggregate( [
+   // First, add a $match stage to filter the documents
+   {
+      $match : {
+         "src_airport" : "PDX",
+         "stops" : 0
+      }
+   },
+   //The $match stage reduces the number of documents in our pipeline from 66,985 to 113.
+
+   //Next, $group the documents by airline name and count the number of flights:
+   {
+      $group : {
+         _id : {
+            "airline name": "$airline.name",
+         }
+         count : {
+            $sum: 1
+         }
+      }
+   },
+   // The $group stage reduces the number of documents in the pipeline to 16 airlines.
+
+   // To find the airlines with the most flights, use the $sort stage to sort the remaining documents in descending order:
+   {
+      $sort : {
+         count : -1
+      }
+   },
+   // After you sort your documents, use the $limit stage to return the top three airlines that offer the most direct flights out of PDX:
+   {
+      $limit : 3
+   }
+] )
+```
+
+**NOTE:**
+
+- Aggregation pipelines run with the db.collection.aggregate() method do not modify documents in a collection, unless the pipeline contains a $merge or $out stage.
+- It always return a array of one or more objects.
+
+
+```js
+[ 
+   {
+      $lookup: {
+         from:"authors",
+         localField: "author_id",
+         foreignField: "_id", 
+         as: "author_details"
+      }
+   },
+   {
+      $addFields: {
+         author_details: {
+            //$first: "$auther_details"
+            $arrayElemAt: ["$author_details", 0]
+         }
+      }
+   }
+]
+```
+
+### [Aggregation Expressions like $match, $size...](https://www.mongodb.com/docs/manual/reference/mql/expressions/)
+
+**`$lookup`** : use for joining the other document into current one. here in example we joins author document inside book. It return a document with new field whose name is given in `as` key. and value is Array -> [0] : Object -> {
+   // data that are joined from authors
+}
+
+**`$size`** : Counts and returns the total number of items in an array.
+
+**`$cond`** : to create condition. it have 3 parameter if, then and else. Example,
+
+``` js
+$cond: {
+   if: {}
+   then: 
+   else: 
+}
+```
+
+**`$in`** : Returns a boolean indicating whether a specified value is in an array.
+Ex. 
+
+```js
+$in: [res.user?._id, "$subscribers.subscriber"]
+```
+
+**`$project`** : The $project operator in MongoDB aggregation shapes documents by including, excluding, or adding fields in the pipeline. It can rename fields, calculate new values, and suppress the _id. It is **used within db.collection.aggregate**([{$project: {...}}])
+
+```js
+$project: {
+// 1. Field Selection (Include)
+title: 1, 
+
+// 2. Exclusion (Explicitly hide the default _id)
+_id: 0, 
+
+// 3. Renaming (Change 'user_name' to 'author')
+author: "$user_name", 
+
+// 4. Computed Field (Calculate total using an operator)
+totalCost: { $add: ["$price", "$shipping"] },
+
+// 5. Using $in (Check if a category exists in an array)
+isTech: { $in: ["electronics", "$categories"] }
+}
+```
+
+Interview question : what req.user._id returns?.. it return string of id, Not actual ObjectId.
+
+```js
+$match: {
+   _id: req.user._id // this is wrong becuase it is a string
+   _id: new mongoose.Types.ObjectId(req.user._id) // right
+}
+```
+
+We can do nested pipeline. It is commonly used with stages like: `$lookup`, `$facet`, `$unionWith`
+
+```js
+$lookup: {
+   from: "videos",
+   localField: "watchHistory",
+   foreignField: "_id",
+   as: "watchHistory",
+   pipeline: [
+      // nested pipeline
+   ]
+}
+```
