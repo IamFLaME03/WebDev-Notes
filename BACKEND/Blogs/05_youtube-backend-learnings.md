@@ -156,7 +156,8 @@ const userSchema = new mongoose.Schema({
 
 ### [mongoose-aggregate-paginate-v2](https://www.npmjs.com/package/mongoose-aggregate-paginate-v2) package
 
-this package allows us to write aggregations queries
+`mongoose-aggregate-paginate-v2` is a NPM plugin for Mongoose that adds pagination capabilities specifically to MongoDB aggregation pipelines. It efficiently handles large datasets by breaking them into manageable chunks (pages), allowing for sorting, filtering, and data transformation within complex pipelines.
+
 > [Docs of Aggregation Pipeline in MongoDB](https://www.w3schools.com/mongodb/mongodb_aggregations_intro.php)
 
 ---
@@ -518,6 +519,36 @@ Ex.
 
 ```js
 $in: [res.user?._id, "$subscribers.subscriber"]
+```
+
+**`$regex`** is used for pattern searching in MongoDB.
+
+`$options: "i"` i = **case insensitive**
+
+- Without it: React ≠ react
+- With it: React = react = REACT
+
+```js
+matchStage.$or = [
+   { title: { $regex: query, $options: "i" } },
+   { description: { $regex: query, $options: "i" } }
+]
+```
+
+There is better option to search large dataset by `$text`- it search all index field that have type=text.
+
+Note : we must have to make text indexes in model file
+
+```js
+// In model code
+// after schema...
+videoSchema.index({
+   title: "text",
+   description: "text"
+})
+
+// inside controllers logic
+matchStage.$text = { $search: query }
 ```
 
 **`$project`** : The $project operator in MongoDB aggregation shapes documents by including, excluding, or adding fields in the pipeline. It can rename fields, calculate new values, and suppress the _id. It is **used within db.collection.aggregate**([{$project: {...}}])
